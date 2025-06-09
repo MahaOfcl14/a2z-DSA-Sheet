@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        int sum1 = (n*(n+1))/2;
+        int sum2=0;
+        for(int num : nums){
+            sum2 += num;
+        }
+        int missing = sum1-sum2;
+        return missing;
+        
+    }
+};
+
+XOR
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        int xor1=0, xor2=0;
+        for(int i=0; i<n; i++){
+            xor1 = xor1^(i+1); //xor of n natural numbers
+            xor2 = xor2^nums[i]; //xor of array elem
+        }
+        return xor1^xor2;
+        
+    }
+};
